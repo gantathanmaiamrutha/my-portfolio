@@ -679,35 +679,50 @@ export default function Portfolio() {
             >
               A passionate Electronics and Communication Engineering student with expertise in embedded systems, AI
               automation, and full-stack development. Currently pursuing my Bachelor's degree at Sri Vishnu Engineering
-              College for Women with a stellar CGPA of 9.17/10, while aspiring to serve the nation as an IAS officer.
+              College for Women, while aspiring to serve the nation as an IAS officer.
+              
+              <br /><br />
+              
+              With a strong foundation in both technical skills and leadership qualities, I believe in leveraging technology 
+              to solve real-world problems and create meaningful impact. My journey spans from developing innovative IoT 
+              solutions to participating in competitive hackathons, always driven by curiosity and a commitment to excellence.
+              
+              <br /><br />
+              
+              Beyond academics, I am deeply committed to social service and community development, viewing technology as a 
+              powerful tool for societal transformation. My ultimate goal is to bridge the gap between technological 
+              innovation and public service through a career in civil administration.
             </motion.p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               {
                 icon: <Code className="w-10 h-10" />,
                 title: "Technical Excellence",
                 description:
-                  "Proficient in multiple programming languages and development tools with hands-on project experience in embedded systems and web development.",
+                  "Proficient in multiple programming languages and development tools with hands-on project experience in embedded systems and web development. Specialized in Arduino programming, FPGA design, and modern web technologies.",
                 color: isDark ? "from-cyan-400 to-blue-400" : "from-blue-500 to-indigo-500",
                 stats: "15+ Projects",
+                achievements: ["Arduino Expert", "FPGA Programming", "Full-Stack Development", "IoT Solutions"],
               },
               {
                 icon: <Brain className="w-10 h-10" />,
                 title: "Innovation Focus",
                 description:
-                  "Passionate about AI, automation, and emerging technologies with practical implementation skills in IoT and FPGA design.",
+                  "Passionate about AI, automation, and emerging technologies with practical implementation skills in IoT and FPGA design. Constantly exploring new frontiers in technology and their applications in solving complex problems.",
                 color: isDark ? "from-teal-400 to-emerald-400" : "from-indigo-500 to-purple-500",
-                stats: "3+ Technologies",
+                stats: "5+ Technologies",
+                achievements: ["AI & ML Enthusiast", "Automation Expert", "Research Oriented", "Innovation Mindset"],
               },
               {
                 icon: <Target className="w-10 h-10" />,
                 title: "Leadership Vision",
                 description:
-                  "Aspiring IAS officer with a vision to contribute to society through technology and governance, combining technical skills with public service.",
+                  "Aspiring IAS officer with a vision to contribute to society through technology and governance, combining technical skills with public service. Committed to using technology for social good and administrative excellence.",
                 color: isDark ? "from-blue-400 to-cyan-400" : "from-purple-500 to-pink-500",
                 stats: "Future Leader",
+                achievements: ["UPSC Aspirant", "Social Service", "Public Policy Interest", "Administrative Vision"],
               },
             ].map((item, index) => (
               <motion.div
@@ -752,17 +767,80 @@ export default function Portfolio() {
                     <CardTitle className={`text-xl font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-2`}>
                       {item.title}
                     </CardTitle>
-                    <Badge className={`bg-gradient-to-r ${item.color} text-white`}>{item.stats}</Badge>
+                    <Badge className={`bg-gradient-to-r ${item.color} text-white mb-3`}>{item.stats}</Badge>
                   </CardHeader>
                   <CardContent>
-                    <p className={`${isDark ? "text-gray-300" : "text-gray-600"} leading-relaxed`}>
+                    <p className={`${isDark ? "text-gray-300" : "text-gray-600"} leading-relaxed mb-4`}>
                       {item.description}
                     </p>
+                    <div className="space-y-2">
+                      <h4 className={`text-sm font-semibold ${isDark ? "text-cyan-400" : "text-blue-600"} mb-2`}>
+                        Key Strengths:
+                      </h4>
+                      <div className="flex flex-wrap gap-1">
+                        {item.achievements.map((achievement, idx) => (
+                          <Badge
+                            key={idx}
+                            variant="outline"
+                            className={`text-xs ${
+                              isDark ? "border-slate-600 text-gray-400" : "border-gray-300 text-gray-600"
+                            }`}
+                          >
+                            {achievement}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
           </div>
+
+          {/* Personal Stats Section */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {[
+              { number: "9.17", label: "CGPA", suffix: "/10" },
+              { number: "15+", label: "Projects", suffix: "" },
+              { number: "5+", label: "Technologies", suffix: "" },
+              { number: "2026", label: "Graduation", suffix: "" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                className={`text-center p-6 rounded-xl ${
+                  isDark ? "bg-slate-800/50" : "bg-white/50"
+                } backdrop-blur-sm border ${
+                  isDark ? "border-slate-700" : "border-gray-200"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <motion.div
+                  className={`text-2xl md:text-3xl font-bold ${
+                    isDark ? "text-cyan-400" : "text-blue-600"
+                  } mb-2`}
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  {stat.number}
+                  <span className="text-lg">{stat.suffix}</span>
+                </motion.div>
+                <div className={`text-sm font-medium ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -798,27 +876,59 @@ export default function Portfolio() {
             {[
               {
                 category: "Programming Languages",
-                skills: ["HTML5", "CSS3", "JavaScript", "Python", "C", "Verilog HDL"],
+                skills: [
+                  { name: "HTML5", level: 95 },
+                  { name: "CSS3", level: 90 },
+                  { name: "JavaScript", level: 85 },
+                  { name: "Python", level: 80 },
+                  { name: "C Programming", level: 85 },
+                  { name: "Verilog HDL", level: 75 }
+                ],
                 color: isDark ? "from-cyan-500 to-blue-500" : "from-blue-500 to-indigo-500",
                 icon: <Code className="w-6 h-6" />,
+                description: "Strong foundation in multiple programming paradigms"
               },
               {
-                category: "Development",
-                skills: ["Full Stack Development", "Web Design", "Embedded Systems", "FPGA Design"],
+                category: "Development & Design",
+                skills: [
+                  { name: "React.js", level: 80 },
+                  { name: "Next.js", level: 75 },
+                  { name: "Tailwind CSS", level: 90 },
+                  { name: "Responsive Design", level: 95 },
+                  { name: "UI/UX Design", level: 70 },
+                  { name: "Web Optimization", level: 75 }
+                ],
                 color: isDark ? "from-teal-500 to-emerald-500" : "from-indigo-500 to-purple-500",
                 icon: <Palette className="w-6 h-6" />,
+                description: "Modern web development and design expertise"
               },
               {
-                category: "Tools & Technologies",
-                skills: ["Arduino", "Quartus II", "Git", "GitHub", "Microcontrollers", "Sensors"],
+                category: "Hardware & Embedded",
+                skills: [
+                  { name: "Arduino", level: 90 },
+                  { name: "FPGA Design", level: 80 },
+                  { name: "Quartus II", level: 75 },
+                  { name: "IoT Systems", level: 85 },
+                  { name: "Sensor Integration", level: 80 },
+                  { name: "Circuit Design", level: 70 }
+                ],
                 color: isDark ? "from-blue-500 to-cyan-500" : "from-purple-500 to-pink-500",
                 icon: <Zap className="w-6 h-6" />,
+                description: "Hands-on experience with embedded systems and IoT"
               },
               {
-                category: "Soft Skills",
-                skills: ["Problem Solving", "Team Collaboration", "Self-Learning", "Adaptability"],
+                category: "Tools & Professional",
+                skills: [
+                  { name: "Git & GitHub", level: 85 },
+                  { name: "Problem Solving", level: 95 },
+                  { name: "Team Leadership", level: 80 },
+                  { name: "Project Management", level: 75 },
+                  { name: "Technical Writing", level: 85 },
+                  { name: "Research Skills", level: 90 }
+                ],
                 color: isDark ? "from-emerald-500 to-teal-500" : "from-pink-500 to-red-500",
                 icon: <Users className="w-6 h-6" />,
+                description: "Professional skills and collaboration tools"
               },
             ].map((skillGroup, index) => (
               <motion.div
@@ -844,32 +954,44 @@ export default function Portfolio() {
                       >
                         {skillGroup.icon}
                       </motion.div>
-                      <CardTitle className={`text-lg ${isDark ? "text-white" : "text-gray-900"}`}>
-                        {skillGroup.category}
-                      </CardTitle>
+                      <div>
+                        <CardTitle className={`text-lg ${isDark ? "text-white" : "text-gray-900"}`}>
+                          {skillGroup.category}
+                        </CardTitle>
+                        <p className={`text-xs ${isDark ? "text-gray-400" : "text-gray-600"} mt-1`}>
+                          {skillGroup.description}
+                        </p>
+                      </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="space-y-4">
                       {skillGroup.skills.map((skill, skillIndex) => (
                         <motion.div
                           key={skillIndex}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: skillIndex * 0.1 }}
                           viewport={{ once: true }}
-                          whileHover={{ scale: 1.1, y: -2 }}
+                          className="space-y-2"
                         >
-                          <Badge
-                            variant="secondary"
-                            className={`text-xs ${
-                              isDark
-                                ? "bg-slate-700 text-gray-300 hover:bg-slate-600"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                            } transition-colors duration-200`}
-                          >
-                            {skill}
-                          </Badge>
+                          <div className="flex justify-between items-center">
+                            <span className={`text-sm font-medium ${isDark ? "text-gray-300" : "text-gray-700"}`}>
+                              {skill.name}
+                            </span>
+                            <span className={`text-xs ${isDark ? "text-cyan-400" : "text-blue-600"} font-semibold`}>
+                              {skill.level}%
+                            </span>
+                          </div>
+                          <div className={`w-full bg-gray-200 rounded-full h-2 ${isDark ? "bg-slate-700" : ""}`}>
+                            <motion.div
+                              className={`bg-gradient-to-r ${skillGroup.color} h-2 rounded-full`}
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${skill.level}%` }}
+                              transition={{ duration: 1, delay: skillIndex * 0.1 }}
+                              viewport={{ once: true }}
+                            />
+                          </div>
                         </motion.div>
                       ))}
                     </div>
@@ -878,6 +1000,76 @@ export default function Portfolio() {
               </motion.div>
             ))}
           </div>
+
+          {/* Additional Skills Categories */}
+          <motion.div
+            className="mt-16 max-w-6xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h3 className={`text-2xl font-bold text-center mb-8 ${isDark ? "text-white" : "text-gray-900"}`}>
+              Additional Expertise
+            </h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Academic Excellence",
+                  items: ["Electronics & Communication", "Digital Signal Processing", "Microprocessors", "Control Systems", "Communication Systems", "VLSI Design"],
+                  icon: <BookOpen className="w-5 h-5" />
+                },
+                {
+                  title: "Emerging Technologies",
+                  items: ["Internet of Things", "Machine Learning", "Artificial Intelligence", "Blockchain Basics", "Cloud Computing", "Edge Computing"],
+                  icon: <Brain className="w-5 h-5" />
+                },
+                {
+                  title: "Soft Skills",
+                  items: ["Leadership", "Public Speaking", "Critical Thinking", "Analytical Skills", "Time Management", "Adaptability"],
+                  icon: <Heart className="w-5 h-5" />
+                }
+              ].map((category, index) => (
+                <motion.div
+                  key={index}
+                  className={`p-6 rounded-xl ${
+                    isDark ? "bg-slate-800/50" : "bg-white/50"
+                  } backdrop-blur-sm border ${
+                    isDark ? "border-slate-700" : "border-gray-200"
+                  }`}
+                  whileHover={{ scale: 1.02 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`w-10 h-10 ${isDark ? "bg-cyan-500/20" : "bg-blue-500/20"} rounded-lg flex items-center justify-center ${isDark ? "text-cyan-400" : "text-blue-600"}`}>
+                      {category.icon}
+                    </div>
+                    <h4 className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>
+                      {category.title}
+                    </h4>
+                  </div>
+                  <div className="space-y-2">
+                    {category.items.map((item, idx) => (
+                      <motion.div
+                        key={idx}
+                        className={`text-sm ${isDark ? "text-gray-300" : "text-gray-600"} flex items-center gap-2`}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: idx * 0.05 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-cyan-400" : "bg-blue-500"}`} />
+                        {item}
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -1064,7 +1256,7 @@ export default function Portfolio() {
                           <Badge
                             variant="outline"
                             className={`text-xs ${
-                              isDark ? "border-slate-600 text-gray-400" : "border-gray-300 text-gray-600"
+                              isDark ? "border-slate-600 text-gray-300" : "border-gray-300 text-gray-700"
                             }`}
                           >
                             {tech}
@@ -1120,21 +1312,37 @@ export default function Portfolio() {
             <div className="relative">
               {/* Timeline line */}
               <motion.div
-                className={`absolute left-8 top-0 bottom-0 w-0.5 ${
-                  isDark ? "bg-gradient-to-b from-cyan-400 to-teal-400" : "bg-gradient-to-b from-blue-500 to-purple-500"
-                }`}
+                className={`absolute left-[1.95rem] sm:left-[1.95rem] top-[2rem] bottom-16 w-[3px] z-10 ${
+                  isDark ? "bg-gradient-to-b from-cyan-400 to-teal-400/70" : "bg-gradient-to-b from-blue-500 to-purple-500/70"
+                } rounded-full hidden sm:block`}
                 initial={{ height: 0 }}
-                whileInView={{ height: "100%" }}
+                whileInView={{ height: "calc(100% - 4rem)" }}
                 transition={{ duration: 2 }}
               />
 
-              <div className="space-y-12">
+              <div className="space-y-12 sm:space-y-20">
                 {[
                   {
                     title: "Bachelor of Technology - Electronics and Communication Engineering",
                     institution: "Sri Vishnu Engineering College for Women",
+                    location: "Bhimavaram, Andhra Pradesh",
                     period: "Oct 2022 - May 2026",
                     grade: "CGPA: 9.17/10.00",
+                    description: "Pursuing comprehensive education in electronics, communication systems, and embedded technologies with focus on practical applications and research.",
+                    achievements: [
+                      "Top 5% of the class",
+                      "Consistent academic excellence",
+                      "Active in technical projects",
+                      "Leadership roles in college events"
+                    ],
+                    coursework: [
+                      "Digital Signal Processing",
+                      "Microprocessors & Microcontrollers",
+                      "VLSI Design",
+                      "Communication Systems",
+                      "Control Systems",
+                      "Embedded Systems"
+                    ],
                     icon: <BookOpen className="w-6 h-6" />,
                     color: isDark ? "from-cyan-500 to-blue-500" : "from-blue-500 to-indigo-500",
                     status: "Current",
@@ -1142,26 +1350,74 @@ export default function Portfolio() {
                   {
                     title: "EduSkills Cohort 9 - Embedded Systems",
                     institution: "Virtual Program (AICTE Collaboration)",
+                    location: "Online Learning Platform",
                     period: "May 2024 - Jun 2024",
-                    grade: "Industry-relevant skills in electronics",
+                    grade: "Certificate of Completion",
+                    description: "Intensive industry-focused program on embedded systems development, IoT applications, and practical implementation of hardware-software integration.",
+                    achievements: [
+                      "Hands-on project completion",
+                      "Industry mentor guidance",
+                      "Real-world problem solving",
+                      "Technical skill enhancement"
+                    ],
+                    coursework: [
+                      "Embedded C Programming",
+                      "Hardware Interface Design",
+                      "IoT Device Development",
+                      "Sensor Integration",
+                      "Real-time Systems",
+                      "Industry Best Practices"
+                    ],
                     icon: <Award className="w-6 h-6" />,
                     color: isDark ? "from-teal-500 to-emerald-500" : "from-indigo-500 to-purple-500",
                     status: "Completed",
                   },
                   {
-                    title: "XII Standard - MPC",
+                    title: "XII Standard - Mathematics, Physics, Chemistry",
                     institution: "Bharathi Junior College",
+                    location: "Bhimavaram, Andhra Pradesh",
                     period: "2020 - 2022",
                     grade: "Marks: 981/1000 (98.1%)",
+                    description: "Exceptional performance in science stream with strong foundation in mathematics and physics, preparing for engineering entrance examinations.",
+                    achievements: [
+                      "College topper in Mathematics",
+                      "98.1% aggregate score",
+                      "Science stream excellence",
+                      "JEE preparation success"
+                    ],
+                    coursework: [
+                      "Advanced Mathematics",
+                      "Physics Mechanics & Waves",
+                      "Physical Chemistry",
+                      "Organic Chemistry",
+                      "Inorganic Chemistry",
+                      "English Communication"
+                    ],
                     icon: <BookOpen className="w-6 h-6" />,
                     color: isDark ? "from-blue-500 to-cyan-500" : "from-purple-500 to-pink-500",
                     status: "Completed",
                   },
                   {
-                    title: "X Standard",
+                    title: "X Standard - Secondary School Certificate",
                     institution: "Vignana Bharathi High School",
+                    location: "Bhimavaram, Andhra Pradesh",
                     period: "2019 - 2020",
                     grade: "Marks: 596/600 (99.3%)",
+                    description: "Outstanding academic performance with near-perfect scores across all subjects, demonstrating strong foundational knowledge and study discipline.",
+                    achievements: [
+                      "99.3% aggregate score",
+                      "Subject-wise excellence",
+                      "Academic consistency",
+                      "Foundation building"
+                    ],
+                    coursework: [
+                      "Mathematics",
+                      "Science (Physics, Chemistry, Biology)",
+                      "Social Studies",
+                      "English",
+                      "Telugu",
+                      "Hindi"
+                    ],
                     icon: <BookOpen className="w-6 h-6" />,
                     color: isDark ? "from-emerald-500 to-teal-500" : "from-pink-500 to-red-500",
                     status: "Completed",
@@ -1169,43 +1425,90 @@ export default function Portfolio() {
                 ].map((edu, index) => (
                   <motion.div
                     key={index}
-                    className="relative flex gap-8 group"
+                    className="relative flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 group"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    {/* Timeline dot */}
-                    <motion.div
-                      className={`relative z-10 w-16 h-16 bg-gradient-to-r ${edu.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {edu.icon}
-                    </motion.div>
-
+                    {/* Timeline dot - visible only on sm screens and up */}
+                    <div className="relative mx-auto sm:mx-0 flex-shrink-0 flex items-center justify-center w-[68px] h-16 mb-4 sm:mb-0">
+                      {/* Connector line - visible only on sm screens and up */}
+                      <div className={`absolute left-0 top-1/2 w-7 h-[3px] -translate-x-5 -translate-y-1/2 ${
+                        isDark ? "bg-gradient-to-l from-cyan-400 to-cyan-400/30" : "bg-gradient-to-l from-blue-500 to-blue-500/30"
+                      } rounded-full hidden sm:block`}></div>
+                      
+                      <motion.div
+                        className={`relative z-10 w-16 h-16 bg-gradient-to-r ${edu.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        {edu.icon}
+                      </motion.div>
+                    </div>
+                    
                     {/* Content */}
                     <Card
                       className={`flex-grow ${
                         isDark
                           ? "bg-slate-800/80 border-slate-700 hover:border-cyan-500/50"
                           : "bg-white/80 border-gray-200 hover:border-blue-300/50"
-                      } backdrop-blur-sm transition-all duration-300`}
+                      } backdrop-blur-sm transition-all duration-300 shadow-md`}
                     >
-                      <CardContent className="p-6">
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
+                      <CardContent className="p-6 md:p-8">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                          <div className="flex-grow mb-3 sm:mb-0">
                             <h3 className={`text-xl font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-2`}>
                               {edu.title}
                             </h3>
                             <p className={`${isDark ? "text-cyan-400" : "text-blue-600"} font-medium mb-1`}>
                               {edu.institution}
                             </p>
-                            <p className={`${isDark ? "text-gray-400" : "text-gray-600"} text-sm mb-2`}>{edu.period}</p>
+                            <p className={`${isDark ? "text-gray-400" : "text-gray-600"} text-sm mb-2`}>
+                              📍 {edu.location} | 📅 {edu.period}
+                            </p>
+                            <p className={`${isDark ? "text-emerald-400" : "text-green-600"} font-medium mb-3`}>
+                              🏆 {edu.grade}
+                            </p>
                           </div>
-                          <Badge className={`bg-gradient-to-r ${edu.color} text-white`}>{edu.status}</Badge>
+                          <Badge className={`bg-gradient-to-r ${edu.color} text-white self-start`}>{edu.status}</Badge>
                         </div>
-                        <p className={`${isDark ? "text-emerald-400" : "text-green-600"} font-medium`}>{edu.grade}</p>
+                        
+                        <p className={`${isDark ? "text-gray-300" : "text-gray-600"} mb-4 leading-relaxed`}>
+                          {edu.description}
+                        </p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {/* Achievements */}
+                          <div>
+                            <h4 className={`text-sm font-semibold ${isDark ? "text-cyan-400" : "text-blue-600"} mb-2`}>
+                              Key Achievements:
+                            </h4>
+                            <div className="space-y-1">
+                              {edu.achievements.map((achievement, idx) => (
+                                <div key={idx} className={`text-xs ${isDark ? "text-gray-300" : "text-gray-600"} flex items-center gap-2`}>
+                                  <div className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-cyan-400" : "bg-blue-500"}`} />
+                                  {achievement}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Coursework */}
+                          <div>
+                            <h4 className={`text-sm font-semibold ${isDark ? "text-teal-400" : "text-indigo-600"} mb-2`}>
+                              Key Coursework:
+                            </h4>
+                            <div className="space-y-1">
+                              {edu.coursework.map((course, idx) => (
+                                <div key={idx} className={`text-xs ${isDark ? "text-gray-300" : "text-gray-600"} flex items-center gap-2`}>
+                                  <div className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-teal-400" : "bg-indigo-500"}`} />
+                                  {course}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -1249,38 +1552,80 @@ export default function Portfolio() {
               {
                 icon: <BookOpen className="w-8 h-8" />,
                 title: "Mythological Literature",
-                description: "Reading mythological books and watching related movies and serials",
+                description: "Deep fascination with ancient texts, epics, and mythological stories from various cultures. Regular reading of Ramayana, Mahabharata, and Puranas.",
+                details: [
+                  "Reading ancient scriptures and epics",
+                  "Analyzing mythological themes and morals",
+                  "Watching historical documentaries",
+                  "Understanding cultural heritage"
+                ],
                 color: isDark ? "from-amber-400 to-orange-400" : "from-orange-500 to-red-500",
+                impact: "Develops wisdom and moral values"
               },
               {
                 icon: <Heart className="w-8 h-8" />,
                 title: "Yoga & Meditation",
-                description: "Practicing yoga and meditation for mental and physical wellness",
+                description: "Daily practice of yoga asanas and meditation for physical wellness and mental clarity. Believe in holistic health approach.",
+                details: [
+                  "Morning yoga sessions",
+                  "Breathing exercises (Pranayama)",
+                  "Mindfulness meditation",
+                  "Stress management techniques"
+                ],
                 color: isDark ? "from-emerald-400 to-teal-400" : "from-green-500 to-teal-500",
+                impact: "Enhances focus and reduces stress"
               },
               {
                 icon: <BookOpen className="w-8 h-8" />,
-                title: "Reading",
-                description: "Exploring various genres of books for continuous learning",
+                title: "Academic Reading",
+                description: "Passionate reader across multiple genres including technical books, biographies, and self-improvement literature.",
+                details: [
+                  "Technical books on emerging technologies",
+                  "Biographies of inspiring personalities",
+                  "Self-improvement and productivity books",
+                  "Current affairs and general knowledge"
+                ],
                 color: isDark ? "from-blue-400 to-cyan-400" : "from-blue-500 to-indigo-500",
+                impact: "Continuous learning and knowledge expansion"
               },
               {
                 icon: <Users className="w-8 h-8" />,
-                title: "Volunteering",
-                description: "Participating in awareness camps and community service",
+                title: "Community Service",
+                description: "Active participation in social awareness campaigns, community outreach programs, and volunteer activities for societal development.",
+                details: [
+                  "Environmental awareness campaigns",
+                  "Educational support for underprivileged",
+                  "Health and hygiene awareness programs",
+                  "Women empowerment initiatives"
+                ],
                 color: isDark ? "from-cyan-400 to-blue-400" : "from-indigo-500 to-purple-500",
+                impact: "Contributing to social betterment"
               },
               {
                 icon: <Code className="w-8 h-8" />,
-                title: "Tech Exploration",
-                description: "Exploring new technologies and development frameworks",
+                title: "Technology Exploration",
+                description: "Constantly exploring new technologies, frameworks, and tools. Building personal projects and staying updated with tech trends.",
+                details: [
+                  "Learning new programming languages",
+                  "Building innovative projects",
+                  "Following tech blogs and podcasts",
+                  "Attending webinars and workshops"
+                ],
                 color: isDark ? "from-teal-400 to-emerald-400" : "from-purple-500 to-pink-500",
+                impact: "Staying ahead in technological advancements"
               },
               {
                 icon: <Camera className="w-8 h-8" />,
-                title: "Creative Arts",
-                description: "Exploring photography and creative design projects",
+                title: "Creative Pursuits",
+                description: "Exploring photography, creative writing, and digital art as means of self-expression and artistic development.",
+                details: [
+                  "Nature and portrait photography",
+                  "Creative writing and blogging",
+                  "Digital art and design",
+                  "Cultural event documentation"
+                ],
                 color: isDark ? "from-pink-400 to-rose-400" : "from-pink-500 to-red-500",
+                impact: "Developing artistic perspective and creativity"
               },
             ].map((hobby, index) => (
               <motion.div
@@ -1298,7 +1643,7 @@ export default function Portfolio() {
                       : "bg-white/80 border-gray-200 hover:border-blue-300/50"
                   } backdrop-blur-sm transition-all duration-300 group`}
                 >
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-6">
                     <motion.div
                       className={`w-16 h-16 bg-gradient-to-r ${hobby.color} rounded-full flex items-center justify-center text-white mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}
                       whileHover={{ rotate: 360 }}
@@ -1306,12 +1651,34 @@ export default function Portfolio() {
                     >
                       {hobby.icon}
                     </motion.div>
-                    <h3 className={`text-lg font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-3`}>
+                    <h3 className={`text-lg font-semibold ${isDark ? "text-white" : "text-gray-900"} mb-3 text-center`}>
                       {hobby.title}
                     </h3>
-                    <p className={`${isDark ? "text-gray-300" : "text-gray-600"} text-sm leading-relaxed`}>
+                    <p className={`${isDark ? "text-gray-300" : "text-gray-600"} text-sm leading-relaxed mb-4`}>
                       {hobby.description}
                     </p>
+                    
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className={`text-xs font-semibold ${isDark ? "text-cyan-400" : "text-blue-600"} mb-2`}>
+                          Activities:
+                        </h4>
+                        <div className="space-y-1">
+                          {hobby.details.map((detail, idx) => (
+                            <div key={idx} className={`text-xs ${isDark ? "text-gray-400" : "text-gray-600"} flex items-center gap-2`}>
+                              <div className={`w-1 h-1 rounded-full ${isDark ? "bg-cyan-400" : "bg-blue-500"}`} />
+                              {detail}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className={`pt-2 border-t ${isDark ? "border-slate-700" : "border-gray-200"}`}>
+                        <p className={`text-xs italic ${isDark ? "text-emerald-400" : "text-green-600"}`}>
+                          💡 {hobby.impact}
+                        </p>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
