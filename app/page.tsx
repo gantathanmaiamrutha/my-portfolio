@@ -907,9 +907,7 @@ export default function Portfolio() {
                 skills: [
                   { name: "Arduino", level: 90 },
                   { name: "FPGA Design", level: 80 },
-                  { name: "Quartus II", level: 75 },
                   { name: "IoT Systems", level: 85 },
-                  { name: "Sensor Integration", level: 80 },
                   { name: "Circuit Design", level: 70 }
                 ],
                 color: isDark ? "from-blue-500 to-cyan-500" : "from-purple-500 to-pink-500",
